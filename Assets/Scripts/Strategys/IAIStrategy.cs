@@ -1,41 +1,51 @@
-// IAIStrategy.cs
 using UnityEngine;
+using System.Collections.Generic;
+using System.Linq;
 
-/// <summary>
-/// 定义 AI 策略接口：
-/// 兼容原有 GetBestMove，同时扩展支持新的综合评分系统。
-/// </summary>
 public interface IAIStrategy
 {
     /// <summary>
-    /// 原有接口：根据当前棋盘状态返回最佳移动的 HexCell。
-    /// 传统策略仍可用此接口单独选点。
+    /// 对一个未占据的格子进行评分（必由子类实现）。
     /// </summary>
-    /// <param name="board">当前棋盘二维数组</param>
-    /// <param name="simulations">模拟次数或其他参数（不同策略可使用或忽略）</param>
-    /// <returns>选择的 HexCell，若无合适移动则返回 null</returns>
-    HexCell GetBestMove(HexCell[,] board, int simulations);
+    float EvaluateCell(HexCell[,] board, HexCell cell);
 
     /// <summary>
-    /// 新增接口：对一个未占据的格子进行评分（用于综合打分系统）。
-    /// 默认返回 0 分，子类可按需重写。
+    /// 检测是否存在一步必下的紧急落子（如一步必赢或一步必防），
+    /// 若有则返回该格子；否则返回 null。（子类可实现）
     /// </summary>
-    /// <param name="board">当前棋盘二维数组</param>
-    /// <param name="cell">待评估的 HexCell</param>
-    /// <returns>该格子的评分（默认 0）</returns>
-    float EvaluateCell(HexCell[,] board, HexCell cell)
-    {
-        return 0f; // 默认实现
-    }
+    HexCell GetImmediateMove(HexCell[,] board);
 
     /// <summary>
-    /// 新增接口：检测是否存在紧急必下的位置（如立即胜利或必须防守）。
-    /// 默认返回 null，子类可按需重写。
+    /// 默认实现：先调用 GetImmediateMove，如果有结果就直接返回；
+    /// 否则对所有空格调用 EvaluateCell，选出得分最高的格子。
     /// </summary>
-    /// <param name="board">当前棋盘二维数组</param>
-    /// <returns>若存在需要优先落子的格子，返回 HexCell；否则返回 null</returns>
-    HexCell GetImmediateMove(HexCell[,] board)
+    HexCell GetBestMove(HexCell[,] board, int simulations = 0)
     {
-        return null; // 默认实现
+        // 1. 紧急必下
+        var urgent = GetImmediateMove(board);
+        if (urgent != null) return urgent;
+
+        // 2. 常规评分
+        int rows = board.GetLength(0), cols = board.GetLength(1);
+        HexCell best = null;
+        float bestScore = float.MinValue;
+
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < cols; j++)
+            {
+                var cell = board[i, j];
+                if (cell.isOccupied) continue;
+
+                float score = EvaluateCell(board, cell);
+                if (score > bestScore)
+                {
+                    bestScore = score;
+                    best = cell;
+                }
+            }
+        }
+
+        return best;
     }
 }

@@ -2,152 +2,194 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-/// <summary>
-/// AIPlayer 通过 CompositeAIStrategy 组合多种策略来决策落子，同时还包含游戏结束检测的逻辑。
-/// </summary>
 public class AIPlayer : MonoBehaviour
 {
     private BoardManager boardManager;
 
-    // 当前使用的组合策略，将各个实现了 IAIStrategy 的策略按权重组合在一起
-    public CompositeAIStrategy compositeStrategy { get; private set; }
+    // 上次玩家落子，用于 BoardEvaluator
+    private HexCell lastPlayerMove;
 
-    // 模拟次数（用于 MCTS 等策略），可根据需要调整
-    public int MTCLMoves = 100;
+    // 极大化分数：一步胜利／阻断
+    private const float WIN_SCORE = 10000f;
+    private const float BLOCK_SCORE = 9000f;
 
     void Start()
     {
         boardManager = FindObjectOfType<BoardManager>();
-
-        // 初始化组合策略，并添加各个子策略及其权重
-        compositeStrategy = new CompositeAIStrategy();
-        compositeStrategy.AddStrategy(new MCTSStrategy(), 1.4f);
-        compositeStrategy.AddStrategy(new DoubleThreatStrategy(), 2.5f);
-        compositeStrategy.AddStrategy(new HeuristicStrategy(), 2.0f);
-        // 如有需要，还可以添加 RandomStrategy 或其他策略
     }
 
     /// <summary>
-    /// AI 进行落子决策，并将选中的落子标记为 AI（占据者编号 1）。
+    /// 在玩家落子后必须调用，用于记录 lastPlayerMove
+    /// </summary>
+    public void OnPlayerMove(HexCell playerCell)
+    {
+        lastPlayerMove = playerCell;
+        Debug.Log($"[AIPlayer] OnPlayerMove ← ({playerCell.x},{playerCell.y})");
+    }
+
+
+    /// <summary>
+    /// AI 全盘打分决策：扫描所有空格，打分选最高分落子
     /// </summary>
     public void MakeMove()
     {
         HexCell[,] board = boardManager.GetBoard();
-        HexCell bestMove = compositeStrategy.GetBestMove(board, MTCLMoves);
-        if (bestMove != null)
+        int rows = board.GetLength(0), cols = board.GetLength(1);
+
+        // 收集所有可落子格
+        var available = new List<HexCell>();
+        for (int i = 0; i < rows; i++)
+            for (int j = 0; j < cols; j++)
+                if (!board[i, j].isOccupied)
+                    available.Add(board[i, j]);
+
+        if (available.Count == 0)
         {
-            bestMove.SetOccupied(1); // 1 表示 AI 落子
-            Debug.Log($"AI chooses to place at ({bestMove.x}, {bestMove.y}) using composite strategy.");
+            Debug.LogWarning("AI: no available moves.");
+            return;
+        }
+
+        // 1）上次玩家落子周边得分
+        var evaluator = new BoardEvaluator(board, lastPlayerMove);
+        var evalMap = evaluator.EvaluateBoard();
+
+        HexCell bestCell = null;
+        float bestScore = float.MinValue;
+
+        // 对每个空格打分
+        foreach (var cell in available)
+        {
+            float score = 0f;
+
+            // —— 一步必胜检测 ——
+            var simWin = CloneBoardState(board);
+            ApplyMove(simWin, cell, player: 1);
+            if (HasPlayerWon(simWin, player: 1))
+            {
+                score += WIN_SCORE;
+            }
+            else
+            {
+                // —— 一步必防检测 ——
+                var simBlock = CloneBoardState(board);
+                ApplyMove(simBlock, cell, player: 0);
+                if (HasPlayerWon(simBlock, player: 0))
+                    score += BLOCK_SCORE;
+            }
+
+            // —— 上次玩家落子周边得分 ——
+            if (evalMap.TryGetValue(cell, out float s))
+                score += s;
+
+            // 选择最高分
+            if (score > bestScore)
+            {
+                bestScore = score;
+                bestCell = cell;
+            }
+        }
+
+        // 最终落子
+        if (bestCell != null)
+        {
+            bestCell.SetOccupied(1);
+            Debug.Log($"AI places at ({bestCell.x},{bestCell.y}) score={bestScore:F1}");
+            Debug.Log($"lastPlayerMove = {lastPlayerMove?.x},{lastPlayerMove?.y}, evalMap count = {evalMap.Count}");
+            foreach (var kv in evalMap)
+                Debug.Log($"  neighbor {kv.Key.x},{kv.Key.y} => {kv.Value}");
+
+        }
+    }
+
+    #region —— 模拟 & 克隆 全盘状态 ——
+    private HexCellState[,] CloneBoardState(HexCell[,] original)
+    {
+        int r = original.GetLength(0), c = original.GetLength(1);
+        var copy = new HexCellState[r, c];
+        for (int i = 0; i < r; i++)
+            for (int j = 0; j < c; j++)
+            {
+                var src = original[i, j];
+                copy[i, j] = new HexCellState(src.x, src.y, src.isOccupied, src.occupiedBy);
+            }
+        return copy;
+    }
+
+    private void ApplyMove(HexCellState[,] state, HexCell cell, int player)
+    {
+        state[cell.x, cell.y].isOccupied = true;
+        state[cell.x, cell.y].occupiedBy = player;
+    }
+    #endregion
+
+    #region —— 胜利检测：DFS连通 ——
+    public bool HasPlayerWon(HexCellState[,] boardState, int player)
+    {
+        int r = boardState.GetLength(0), c = boardState.GetLength(1);
+        bool[,] visited = new bool[r, c];
+        var starts = GetStartingCells(boardState, player);
+        foreach (var sc in starts)
+            if (DFS(boardState, sc, player, visited))
+                return true;
+        return false;
+    }
+
+    private List<HexCellState> GetStartingCells(HexCellState[,] boardState, int player)
+    {
+        int r = boardState.GetLength(0), c = boardState.GetLength(1);
+        var list = new List<HexCellState>();
+        if (player == 0)
+        {
+            // 玩家 0 左→右
+            for (int i = 0; i < r; i++)
+                if (boardState[i, 0].occupiedBy == player)
+                    list.Add(boardState[i, 0]);
         }
         else
         {
-            Debug.Log("AI did not find a valid move.");
+            // 玩家 1 上→下
+            for (int j = 0; j < c; j++)
+                if (boardState[0, j].occupiedBy == player)
+                    list.Add(boardState[0, j]);
         }
+        return list;
     }
 
-    #region 游戏结束检测逻辑
-
-    /// <summary>
-    /// 判断指定玩家是否已经获胜（根据 Hex 棋连通性规则）。
-    /// 对于玩家 0，胜利条件为从左侧连到右侧；对于玩家 1，胜利条件为从上侧连到下侧。
-    /// </summary>
-    public bool HasPlayerWon(HexCellState[,] board, int player)
+    private bool DFS(HexCellState[,] boardState, HexCellState cell, int player, bool[,] visited)
     {
-        int rows = board.GetLength(0);
-        int cols = board.GetLength(1);
-        bool[,] visited = new bool[rows, cols];
-        List<HexCellState> startCells = GetStartingCells(board, player);
-        foreach (HexCellState startCell in startCells)
-        {
-            if (DFS(board, startCell, player, visited))
-                return true;
-        }
-        return false;
-    }
-
-    /// <summary>
-    /// 根据玩家编号获取起始边界的棋盘单元：
-    /// 玩家 0 从左侧开始；玩家 1 从上侧开始。
-    /// </summary>
-    public List<HexCellState> GetStartingCells(HexCellState[,] board, int player)
-    {
-        List<HexCellState> startCells = new List<HexCellState>();
-        int rows = board.GetLength(0);
-        int cols = board.GetLength(1);
-        if (player == 0)
-        {
-            // 玩家 0：检查每一行最左侧的单元
-            for (int i = 0; i < rows; i++)
-            {
-                if (board[i, 0].occupiedBy == player)
-                    startCells.Add(board[i, 0]);
-            }
-        }
-        else if (player == 1)
-        {
-            // 玩家 1：检查每一列最上侧的单元
-            for (int j = 0; j < cols; j++)
-            {
-                if (board[0, j].occupiedBy == player)
-                    startCells.Add(board[0, j]);
-            }
-        }
-        return startCells;
-    }
-
-    /// <summary>
-    /// 使用深度优先搜索（DFS）检测玩家是否通过连通起始边界和目标边界而获胜。
-    /// </summary>
-    private bool DFS(HexCellState[,] board, HexCellState cell, int player, bool[,] visited)
-    {
-        int rows = board.GetLength(0);
-        int cols = board.GetLength(1);
-        int x = cell.x;
-        int y = cell.y;
-
-        // 玩家 0 的胜利条件：到达右侧边界；玩家 1 的胜利条件：到达下侧边界
-        if ((player == 0 && y == cols - 1) || (player == 1 && x == rows - 1))
+        int r = boardState.GetLength(0), c = boardState.GetLength(1);
+        // 到达对面边即胜
+        if ((player == 0 && cell.y == c - 1) ||
+            (player == 1 && cell.x == r - 1))
             return true;
 
-        visited[x, y] = true;
-        List<HexCellState> neighbors = GetNeighbors(board, cell);
-        foreach (HexCellState neighbor in neighbors)
+        visited[cell.x, cell.y] = true;
+        foreach (var n in GetNeighbors(boardState, cell))
         {
-            if (!visited[neighbor.x, neighbor.y] && neighbor.occupiedBy == player)
-            {
-                if (DFS(board, neighbor, player, visited))
+            if (!visited[n.x, n.y] && n.occupiedBy == player)
+                if (DFS(boardState, n, player, visited))
                     return true;
-            }
         }
         return false;
     }
 
-    /// <summary>
-    /// 获取当前棋盘单元在 Hex 棋中的相邻单元（六个方向）。
-    /// </summary>
-    private List<HexCellState> GetNeighbors(HexCellState[,] board, HexCellState cell)
+    private List<HexCellState> GetNeighbors(HexCellState[,] boardState, HexCellState cell)
     {
-        List<HexCellState> neighbors = new List<HexCellState>();
-        int rows = board.GetLength(0);
-        int cols = board.GetLength(1);
-        int x = cell.x;
-        int y = cell.y;
-        int[,] directions = new int[,]
+        int[,] dirs = new int[,]
         {
-            {-1, 0}, {-1, 1}, {0, -1}, {0, 1}, {1, -1}, {1, 0}
+            {-1, 0}, {-1, 1},
+            { 0,-1}, { 0, 1},
+            { 1,-1}, { 1, 0}
         };
-
+        var list = new List<HexCellState>();
+        int r = boardState.GetLength(0), c = boardState.GetLength(1);
         for (int i = 0; i < 6; i++)
         {
-            int newX = x + directions[i, 0];
-            int newY = y + directions[i, 1];
-            if (newX >= 0 && newX < rows && newY >= 0 && newY < cols)
-            {
-                neighbors.Add(board[newX, newY]);
-            }
+            int nx = cell.x + dirs[i, 0], ny = cell.y + dirs[i, 1];
+            if (nx >= 0 && nx < r && ny >= 0 && ny < c)
+                list.Add(boardState[nx, ny]);
         }
-        return neighbors;
+        return list;
     }
-
     #endregion
 }

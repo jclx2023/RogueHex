@@ -32,16 +32,8 @@ public class GameController : MonoBehaviour
                 {
                     // 玩家落子，标记为 0（玩家编号）
                     hexCell.SetOccupied(0);
+                    aiPlayer.OnPlayerMove(hexCell);
                     Debug.Log($"Player placed a piece at ({hexCell.x}, {hexCell.y})");
-
-                    // 更新组合策略中所有需要知道玩家最新落子的策略
-                    foreach (var entry in aiPlayer.compositeStrategy.GetStrategies())
-                    {
-                        if (entry.strategy is DoubleThreatStrategy dts)
-                        {
-                            dts.LastPlayerMove = hexCell;
-                        }
-                    }
 
                     // 使用 GetBoard() 时可能存在二义性，请检查 BoardManager 类是否重复定义
                     // 例如，如果 BoardManager 定义在 MyGame 命名空间中，请使用：

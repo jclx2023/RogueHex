@@ -1,0 +1,122 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "G:\\Hex\\RogueHex\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CBB9B4-458D-DCD9-DD17-304F3522BFE7}|Assembly-CSharp.csproj|G:\\Hex\\RogueHex\\assets\\scripts\\gamecontroler\\gamecontroler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CBB9B4-458D-DCD9-DD17-304F3522BFE7}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gamecontroler\\gamecontroler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CBB9B4-458D-DCD9-DD17-304F3522BFE7}|Assembly-CSharp.csproj|G:\\Hex\\RogueHex\\assets\\scripts\\aiplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CBB9B4-458D-DCD9-DD17-304F3522BFE7}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\aiplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CBB9B4-458D-DCD9-DD17-304F3522BFE7}|Assembly-CSharp.csproj|G:\\Hex\\RogueHex\\assets\\scripts\\strategys\\iaistrategy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CBB9B4-458D-DCD9-DD17-304F3522BFE7}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\strategys\\iaistrategy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CBB9B4-458D-DCD9-DD17-304F3522BFE7}|Assembly-CSharp.csproj|G:\\Hex\\RogueHex\\assets\\scripts\\strategys\\boardevaluator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CBB9B4-458D-DCD9-DD17-304F3522BFE7}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\strategys\\boardevaluator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CBB9B4-458D-DCD9-DD17-304F3522BFE7}|Assembly-CSharp.csproj|G:\\Hex\\RogueHex\\assets\\scripts\\strategys\\frontierthreatstrategy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CBB9B4-458D-DCD9-DD17-304F3522BFE7}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\strategys\\frontierthreatstrategy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CBB9B4-458D-DCD9-DD17-304F3522BFE7}|Assembly-CSharp.csproj|G:\\Hex\\RogueHex\\assets\\scripts\\strategys\\mctsstrategy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CBB9B4-458D-DCD9-DD17-304F3522BFE7}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\strategys\\mctsstrategy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GameControler.cs",
+              "DocumentMoniker": "G:\\Hex\\RogueHex\\Assets\\Scripts\\GameControler\\GameControler.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\GameControler\\GameControler.cs",
+              "ToolTip": "G:\\Hex\\RogueHex\\Assets\\Scripts\\GameControler\\GameControler.cs",
+              "RelativeToolTip": "Assets\\Scripts\\GameControler\\GameControler.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAA9wCoAAABMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-04T05:13:42.243Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AIPlayer.cs",
+              "DocumentMoniker": "G:\\Hex\\RogueHex\\Assets\\Scripts\\AIPlayer.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\AIPlayer.cs",
+              "ToolTip": "G:\\Hex\\RogueHex\\Assets\\Scripts\\AIPlayer.cs",
+              "RelativeToolTip": "Assets\\Scripts\\AIPlayer.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAawBoAAABCAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-04T04:46:25.249Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MCTSStrategy.cs",
+              "DocumentMoniker": "G:\\Hex\\RogueHex\\Assets\\Scripts\\Strategys\\MCTSStrategy.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Strategys\\MCTSStrategy.cs",
+              "ToolTip": "G:\\Hex\\RogueHex\\Assets\\Scripts\\Strategys\\MCTSStrategy.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Strategys\\MCTSStrategy.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-04T04:46:14.605Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IAIStrategy.cs",
+              "DocumentMoniker": "G:\\Hex\\RogueHex\\Assets\\Scripts\\Strategys\\IAIStrategy.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Strategys\\IAIStrategy.cs",
+              "ToolTip": "G:\\Hex\\RogueHex\\Assets\\Scripts\\Strategys\\IAIStrategy.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Strategys\\IAIStrategy.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-04T04:46:13.915Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "BoardEvaluator.cs",
+              "DocumentMoniker": "G:\\Hex\\RogueHex\\Assets\\Scripts\\Strategys\\BoardEvaluator.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Strategys\\BoardEvaluator.cs",
+              "ToolTip": "G:\\Hex\\RogueHex\\Assets\\Scripts\\Strategys\\BoardEvaluator.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Strategys\\BoardEvaluator.cs",
+              "ViewState": "AQIAAA4AAAAAAAAAAIA1wC0AAAAvAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-04T04:46:05.898Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "FrontierThreatStrategy.cs",
+              "DocumentMoniker": "G:\\Hex\\RogueHex\\Assets\\Scripts\\Strategys\\FrontierThreatStrategy.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Strategys\\FrontierThreatStrategy.cs",
+              "ToolTip": "G:\\Hex\\RogueHex\\Assets\\Scripts\\Strategys\\FrontierThreatStrategy.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Strategys\\FrontierThreatStrategy.cs",
+              "ViewState": "AQIAAEgAAAAAAAAAAAAowCUAAABMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-04T05:04:53.634Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

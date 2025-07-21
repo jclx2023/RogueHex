@@ -1,4 +1,5 @@
 using UnityEngine;
+using HexGame.Core;
 
 public class HexCell : MonoBehaviour
 {

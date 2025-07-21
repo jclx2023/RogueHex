@@ -3,28 +3,40 @@
   "WorkspaceRootPath": "G:\\Hex\\RogueHex\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B0CBB9B4-458D-DCD9-DD17-304F3522BFE7}|Assembly-CSharp.csproj|G:\\Hex\\RogueHex\\assets\\scripts\\gamecontroler\\gamecontroler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B0CBB9B4-458D-DCD9-DD17-304F3522BFE7}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gamecontroler\\gamecontroler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B0CBB9B4-458D-DCD9-DD17-304F3522BFE7}|Assembly-CSharp.csproj|G:\\Hex\\RogueHex\\assets\\scripts\\core\\gamestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CBB9B4-458D-DCD9-DD17-304F3522BFE7}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\core\\gamestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B0CBB9B4-458D-DCD9-DD17-304F3522BFE7}|Assembly-CSharp.csproj|G:\\Hex\\RogueHex\\assets\\scripts\\aiplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B0CBB9B4-458D-DCD9-DD17-304F3522BFE7}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\aiplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B0CBB9B4-458D-DCD9-DD17-304F3522BFE7}|Assembly-CSharp.csproj|g:\\hex\\roguehex\\assets\\scripts\\ai\\aicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CBB9B4-458D-DCD9-DD17-304F3522BFE7}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ai\\aicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B0CBB9B4-458D-DCD9-DD17-304F3522BFE7}|Assembly-CSharp.csproj|G:\\Hex\\RogueHex\\assets\\scripts\\strategys\\iaistrategy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B0CBB9B4-458D-DCD9-DD17-304F3522BFE7}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\strategys\\iaistrategy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B0CBB9B4-458D-DCD9-DD17-304F3522BFE7}|Assembly-CSharp.csproj|G:\\Hex\\RogueHex\\assets\\scripts\\gameplay\\movevalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CBB9B4-458D-DCD9-DD17-304F3522BFE7}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gameplay\\movevalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B0CBB9B4-458D-DCD9-DD17-304F3522BFE7}|Assembly-CSharp.csproj|G:\\Hex\\RogueHex\\assets\\scripts\\strategys\\boardevaluator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B0CBB9B4-458D-DCD9-DD17-304F3522BFE7}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\strategys\\boardevaluator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B0CBB9B4-458D-DCD9-DD17-304F3522BFE7}|Assembly-CSharp.csproj|G:\\Hex\\RogueHex\\assets\\scripts\\ai\\strategies\\montecarlostrategy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CBB9B4-458D-DCD9-DD17-304F3522BFE7}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ai\\strategies\\montecarlostrategy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B0CBB9B4-458D-DCD9-DD17-304F3522BFE7}|Assembly-CSharp.csproj|G:\\Hex\\RogueHex\\assets\\scripts\\strategys\\frontierthreatstrategy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B0CBB9B4-458D-DCD9-DD17-304F3522BFE7}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\strategys\\frontierthreatstrategy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B0CBB9B4-458D-DCD9-DD17-304F3522BFE7}|Assembly-CSharp.csproj|G:\\Hex\\RogueHex\\assets\\scripts\\ai\\strategies\\threatdetectionstrategy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CBB9B4-458D-DCD9-DD17-304F3522BFE7}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ai\\strategies\\threatdetectionstrategy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B0CBB9B4-458D-DCD9-DD17-304F3522BFE7}|Assembly-CSharp.csproj|G:\\Hex\\RogueHex\\assets\\scripts\\strategys\\mctsstrategy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B0CBB9B4-458D-DCD9-DD17-304F3522BFE7}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\strategys\\mctsstrategy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B0CBB9B4-458D-DCD9-DD17-304F3522BFE7}|Assembly-CSharp.csproj|G:\\Hex\\RogueHex\\assets\\scripts\\gameplay\\winconditionchecker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CBB9B4-458D-DCD9-DD17-304F3522BFE7}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gameplay\\winconditionchecker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CBB9B4-458D-DCD9-DD17-304F3522BFE7}|Assembly-CSharp.csproj|G:\\Hex\\RogueHex\\assets\\scripts\\core\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CBB9B4-458D-DCD9-DD17-304F3522BFE7}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\core\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CBB9B4-458D-DCD9-DD17-304F3522BFE7}|Assembly-CSharp.csproj|G:\\Hex\\RogueHex\\assets\\scripts\\ai\\strategies\\positionalevaluationstrategy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CBB9B4-458D-DCD9-DD17-304F3522BFE7}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ai\\strategies\\positionalevaluationstrategy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CBB9B4-458D-DCD9-DD17-304F3522BFE7}|Assembly-CSharp.csproj|G:\\Hex\\RogueHex\\assets\\scripts\\core\\gameconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CBB9B4-458D-DCD9-DD17-304F3522BFE7}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\core\\gameconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,85 +46,145 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 13,
           "Children": [
             {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:131:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:132:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:133:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:134:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "GameControler.cs",
-              "DocumentMoniker": "G:\\Hex\\RogueHex\\Assets\\Scripts\\GameControler\\GameControler.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\GameControler\\GameControler.cs",
-              "ToolTip": "G:\\Hex\\RogueHex\\Assets\\Scripts\\GameControler\\GameControler.cs",
-              "RelativeToolTip": "Assets\\Scripts\\GameControler\\GameControler.cs",
-              "ViewState": "AQIAAAsAAAAAAAAAAAA9wCoAAABMAAAA",
+              "DocumentIndex": 3,
+              "Title": "MonteCarloStrategy.cs",
+              "DocumentMoniker": "G:\\Hex\\RogueHex\\Assets\\Scripts\\AI\\Strategies\\MonteCarloStrategy.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\AI\\Strategies\\MonteCarloStrategy.cs",
+              "ToolTip": "G:\\Hex\\RogueHex\\Assets\\Scripts\\AI\\Strategies\\MonteCarloStrategy.cs",
+              "RelativeToolTip": "Assets\\Scripts\\AI\\Strategies\\MonteCarloStrategy.cs",
+              "ViewState": "AQIAAMwBAAAAAAAAAADwv9oBAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-04T05:13:42.243Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-21T02:08:35.382Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ThreatDetectionStrategy.cs",
+              "DocumentMoniker": "G:\\Hex\\RogueHex\\Assets\\Scripts\\AI\\Strategies\\ThreatDetectionStrategy.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\AI\\Strategies\\ThreatDetectionStrategy.cs",
+              "ToolTip": "G:\\Hex\\RogueHex\\Assets\\Scripts\\AI\\Strategies\\ThreatDetectionStrategy.cs",
+              "RelativeToolTip": "Assets\\Scripts\\AI\\Strategies\\ThreatDetectionStrategy.cs",
+              "ViewState": "AQIAAOIBAAAAAAAAAAAwwPsBAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-21T02:06:39.254Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "PositionalEvaluationStrategy.cs",
+              "DocumentMoniker": "G:\\Hex\\RogueHex\\Assets\\Scripts\\AI\\Strategies\\PositionalEvaluationStrategy.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\AI\\Strategies\\PositionalEvaluationStrategy.cs",
+              "ToolTip": "G:\\Hex\\RogueHex\\Assets\\Scripts\\AI\\Strategies\\PositionalEvaluationStrategy.cs",
+              "RelativeToolTip": "Assets\\Scripts\\AI\\Strategies\\PositionalEvaluationStrategy.cs",
+              "ViewState": "AQIAAKIAAAAAAAAAAAAAALEAAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-21T02:04:10.675Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "AIPlayer.cs",
-              "DocumentMoniker": "G:\\Hex\\RogueHex\\Assets\\Scripts\\AIPlayer.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\AIPlayer.cs",
-              "ToolTip": "G:\\Hex\\RogueHex\\Assets\\Scripts\\AIPlayer.cs",
-              "RelativeToolTip": "Assets\\Scripts\\AIPlayer.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAawBoAAABCAAAA",
+              "Title": "AIController.cs",
+              "DocumentMoniker": "G:\\Hex\\RogueHex\\Assets\\Scripts\\AI\\AIController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\AI\\AIController.cs",
+              "ToolTip": "G:\\Hex\\RogueHex\\Assets\\Scripts\\AI\\AIController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\AI\\AIController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-04T04:46:25.249Z",
+              "WhenOpened": "2025-07-21T01:54:03.924Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "MCTSStrategy.cs",
-              "DocumentMoniker": "G:\\Hex\\RogueHex\\Assets\\Scripts\\Strategys\\MCTSStrategy.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Strategys\\MCTSStrategy.cs",
-              "ToolTip": "G:\\Hex\\RogueHex\\Assets\\Scripts\\Strategys\\MCTSStrategy.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Strategys\\MCTSStrategy.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAUAAAA",
+              "Title": "WinConditionChecker.cs",
+              "DocumentMoniker": "G:\\Hex\\RogueHex\\Assets\\Scripts\\Gameplay\\WinConditionChecker.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Gameplay\\WinConditionChecker.cs",
+              "ToolTip": "G:\\Hex\\RogueHex\\Assets\\Scripts\\Gameplay\\WinConditionChecker.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Gameplay\\WinConditionChecker.cs",
+              "ViewState": "AQIAAJ8BAAAAAAAAAAAAALsBAABCAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-04T04:46:14.605Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-21T01:51:03.832Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "IAIStrategy.cs",
-              "DocumentMoniker": "G:\\Hex\\RogueHex\\Assets\\Scripts\\Strategys\\IAIStrategy.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Strategys\\IAIStrategy.cs",
-              "ToolTip": "G:\\Hex\\RogueHex\\Assets\\Scripts\\Strategys\\IAIStrategy.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Strategys\\IAIStrategy.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAQAAAA",
+              "Title": "MoveValidator.cs",
+              "DocumentMoniker": "G:\\Hex\\RogueHex\\Assets\\Scripts\\Gameplay\\MoveValidator.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Gameplay\\MoveValidator.cs",
+              "ToolTip": "G:\\Hex\\RogueHex\\Assets\\Scripts\\Gameplay\\MoveValidator.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Gameplay\\MoveValidator.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAApAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-04T04:46:13.915Z",
+              "WhenOpened": "2025-07-21T01:49:22.732Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GameState.cs",
+              "DocumentMoniker": "G:\\Hex\\RogueHex\\Assets\\Scripts\\Core\\GameState.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Core\\GameState.cs",
+              "ToolTip": "G:\\Hex\\RogueHex\\Assets\\Scripts\\Core\\GameState.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Core\\GameState.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAFACAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-21T01:47:45.337Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "BoardEvaluator.cs",
-              "DocumentMoniker": "G:\\Hex\\RogueHex\\Assets\\Scripts\\Strategys\\BoardEvaluator.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Strategys\\BoardEvaluator.cs",
-              "ToolTip": "G:\\Hex\\RogueHex\\Assets\\Scripts\\Strategys\\BoardEvaluator.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Strategys\\BoardEvaluator.cs",
-              "ViewState": "AQIAAA4AAAAAAAAAAIA1wC0AAAAvAAAA",
+              "DocumentIndex": 8,
+              "Title": "GameConfig.cs",
+              "DocumentMoniker": "G:\\Hex\\RogueHex\\Assets\\Scripts\\Core\\GameConfig.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Core\\GameConfig.cs",
+              "ToolTip": "G:\\Hex\\RogueHex\\Assets\\Scripts\\Core\\GameConfig.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Core\\GameConfig.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-04T04:46:05.898Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-21T01:46:25.312Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "FrontierThreatStrategy.cs",
-              "DocumentMoniker": "G:\\Hex\\RogueHex\\Assets\\Scripts\\Strategys\\FrontierThreatStrategy.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Strategys\\FrontierThreatStrategy.cs",
-              "ToolTip": "G:\\Hex\\RogueHex\\Assets\\Scripts\\Strategys\\FrontierThreatStrategy.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Strategys\\FrontierThreatStrategy.cs",
-              "ViewState": "AQIAAEgAAAAAAAAAAAAowCUAAABMAAAA",
+              "DocumentIndex": 6,
+              "Title": "GameManager.cs",
+              "DocumentMoniker": "G:\\Hex\\RogueHex\\Assets\\Scripts\\Core\\GameManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Core\\GameManager.cs",
+              "ToolTip": "G:\\Hex\\RogueHex\\Assets\\Scripts\\Core\\GameManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Core\\GameManager.cs",
+              "ViewState": "AQIAAGIBAAAAAAAAAAAwwH0BAAA4AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-04T05:04:53.634Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-21T01:44:59.581Z"
             }
           ]
         }

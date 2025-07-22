@@ -7,39 +7,39 @@ using HexGame.Gameplay;
 namespace HexGame.AI
 {
     /// <summary>
-    /// AI¿ØÖÆÆ÷ - Í³Ò»µÄAI¾ö²ßÈë¿Ú£¬²ÉÓÃ²ßÂÔ×éºÏÄ£Ê½
-    /// ¸ºÔðÐ­µ÷²»Í¬AI²ßÂÔ£¬¸ù¾ÝÅäÖÃÑ¡Ôñ×î¼Ñ¾ö²ß·½°¸
+    /// AIï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - Í³Ò»ï¿½ï¿½AIï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú£ï¿½ï¿½ï¿½ï¿½Ã²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½
+    /// ï¿½ï¿½ï¿½ï¿½Ð­ï¿½ï¿½ï¿½ï¿½Í¬AIï¿½ï¿½ï¿½Ô£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ß·ï¿½ï¿½ï¿½
     /// </summary>
     public class AIController : MonoBehaviour, IAIController
     {
-        [Header("AI²ßÂÔÅäÖÃ")]
+        [Header("AIï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
         [SerializeField] private AIMode currentAIMode = AIMode.Hybrid;
         [SerializeField] private bool enableStrategyCache = true;
         [SerializeField] private bool enableAsyncProcessing = true;
 
-        [Header("µ÷ÊÔÉèÖÃ")]
+        [Header("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
         [SerializeField] private bool enableDebugLog = true;
         [SerializeField] private bool showThinkingProcess = false;
         [SerializeField] private bool logDecisionDetails = false;
 
-        // ÒÀÀµ×é¼þ
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         private GameConfig config;
         private IWinConditionChecker winConditionChecker;
 
-        // AI²ßÂÔÁÐ±í
+        // AIï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½
         private List<IAIStrategy> strategies;
         private Dictionary<System.Type, IAIStrategy> strategyCache;
 
-        // ¾ö²ß»º´æ
+        // ï¿½ï¿½ï¿½ß»ï¿½ï¿½ï¿½
         private Dictionary<string, Move> moveCache;
         private const int MAX_CACHE_SIZE = 1000;
 
-        // ÐÔÄÜÍ³¼Æ
+        // ï¿½ï¿½ï¿½ï¿½Í³ï¿½ï¿½
         private System.Diagnostics.Stopwatch decisionTimer;
         private float totalThinkingTime = 0f;
         private int totalDecisions = 0;
 
-        #region UnityÉúÃüÖÜÆÚ
+        #region Unityï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
         private void Awake()
         {
@@ -56,18 +56,18 @@ namespace HexGame.AI
 
         #endregion
 
-        #region ³õÊ¼»¯
+        #region ï¿½ï¿½Ê¼ï¿½ï¿½
 
         private void InitializeDependencies()
         {
-            // »ñÈ¡GameManagerµÄÅäÖÃ
+            // ï¿½ï¿½È¡GameManagerï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             var gameManager = FindObjectOfType<GameManager>();
             if (gameManager != null)
             {
                 config = gameManager.GetGameConfig();
             }
 
-            // »ñÈ¡Ê¤¸º¼ì²âÆ÷
+            // ï¿½ï¿½È¡Ê¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             winConditionChecker = FindObjectOfType<WinConditionChecker>();
 
             if (config == null)
@@ -82,16 +82,16 @@ namespace HexGame.AI
             strategies = new List<IAIStrategy>();
             strategyCache = new Dictionary<System.Type, IAIStrategy>();
 
-            // ´´½¨ÍþÐ²¼ì²â²ßÂÔ
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             var threatStrategy = new ThreatDetectionStrategy(config, winConditionChecker);
             RegisterStrategy(threatStrategy);
 
-            // ´´½¨ÃÉÌØ¿¨ÂÞ²ßÂÔ
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¿ï¿½ï¿½Þ²ï¿½ï¿½ï¿½
             var mctsStrategy = new MonteCarloStrategy(config, winConditionChecker);
             RegisterStrategy(mctsStrategy);
 
-            // ´´½¨Î»ÖÃÆÀ¹À²ßÂÔ
-            var positionalStrategy = new PositionalEvaluationStrategy(config);
+            // ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+            var positionalStrategy = new PositionalEvaluationStrategy(config, winConditionChecker);
             RegisterStrategy(positionalStrategy);
 
             LogDebug($"Initialized {strategies.Count} AI strategies");
@@ -116,10 +116,10 @@ namespace HexGame.AI
 
         #endregion
 
-        #region IAIController½Ó¿ÚÊµÏÖ
+        #region IAIControllerï¿½Ó¿ï¿½Êµï¿½ï¿½
 
         /// <summary>
-        /// »ñÈ¡AIµÄ×î¼ÑÒÆ¶¯
+        /// ï¿½ï¿½È¡AIï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½
         /// </summary>
         public Move GetBestMove(GameState gameState)
         {
@@ -133,7 +133,7 @@ namespace HexGame.AI
 
             try
             {
-                // ¼ì²é»º´æ
+                // ï¿½ï¿½é»ºï¿½ï¿½
                 Move cachedMove = GetCachedMove(gameState);
                 if (cachedMove != null)
                 {
@@ -141,7 +141,7 @@ namespace HexGame.AI
                     return cachedMove;
                 }
 
-                // »ñÈ¡ËùÓÐ¿ÉÓÃÒÆ¶¯
+                // ï¿½ï¿½È¡ï¿½ï¿½ï¿½Ð¿ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½
                 var availableMoves = GetAvailableMoves(gameState);
                 if (availableMoves.Count == 0)
                 {
@@ -149,13 +149,13 @@ namespace HexGame.AI
                     return null;
                 }
 
-                // ¸ù¾ÝAIÄ£Ê½Ñ¡Ôñ¾ö²ß²ßÂÔ
+                // ï¿½ï¿½ï¿½ï¿½AIÄ£Ê½Ñ¡ï¿½ï¿½ï¿½ï¿½ß²ï¿½ï¿½ï¿½
                 Move bestMove = SelectBestMoveByMode(gameState, availableMoves);
 
-                // »º´æ¾ö²ß½á¹û
+                // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß½ï¿½ï¿½
                 CacheMove(gameState, bestMove);
 
-                // ¼ÇÂ¼Í³¼ÆÐÅÏ¢
+                // ï¿½ï¿½Â¼Í³ï¿½ï¿½ï¿½ï¿½Ï¢
                 RecordDecisionStats();
 
                 LogDebug($"AI selected move: {bestMove} (thinking time: {decisionTimer.ElapsedMilliseconds}ms)");
@@ -175,7 +175,7 @@ namespace HexGame.AI
 
         #endregion
 
-        #region ¾ö²ß²ßÂÔÑ¡Ôñ
+        #region ï¿½ï¿½ï¿½ß²ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½
 
         private Move SelectBestMoveByMode(GameState gameState, List<Vector2Int> availableMoves)
         {
@@ -197,14 +197,14 @@ namespace HexGame.AI
         }
 
         /// <summary>
-        /// ÍþÐ²ÓÅÏÈÄ£Ê½ - ÓÅÏÈ´¦Àí½ô¼±Çé¿ö
+        /// ï¿½ï¿½Ð²ï¿½ï¿½ï¿½ï¿½Ä£Ê½ - ï¿½ï¿½ï¿½È´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         /// </summary>
         private Move GetThreatFocusedMove(GameState gameState, List<Vector2Int> availableMoves)
         {
             var threatStrategy = GetStrategy<ThreatDetectionStrategy>();
             if (threatStrategy != null)
             {
-                // ¼ì²éÒ»²½±ØÊ¤
+                // ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ê¤
                 var winningMove = threatStrategy.GetWinningMove(gameState, PlayerType.AI);
                 if (winningMove != null)
                 {
@@ -212,7 +212,7 @@ namespace HexGame.AI
                     return winningMove;
                 }
 
-                // ¼ì²éÒ»²½±Ø·À
+                // ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ø·ï¿½
                 var blockingMove = threatStrategy.GetBlockingMove(gameState, PlayerType.Human);
                 if (blockingMove != null)
                 {
@@ -221,12 +221,12 @@ namespace HexGame.AI
                 }
             }
 
-            // »ØÍËµ½Î»ÖÃÆÀ¹À
+            // ï¿½ï¿½ï¿½Ëµï¿½Î»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             return GetPositionalMove(gameState, availableMoves);
         }
 
         /// <summary>
-        /// MCTSÓÅÏÈÄ£Ê½ - Ê¹ÓÃÃÉÌØ¿¨ÂÞÄ£Äâ
+        /// MCTSï¿½ï¿½ï¿½ï¿½Ä£Ê½ - Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½Ø¿ï¿½ï¿½ï¿½Ä£ï¿½ï¿½
         /// </summary>
         private Move GetMCTSFocusedMove(GameState gameState, List<Vector2Int> availableMoves)
         {
@@ -240,7 +240,7 @@ namespace HexGame.AI
         }
 
         /// <summary>
-        /// Î»ÖÃÆÀ¹ÀÄ£Ê½ - »ùÓÚÆô·¢Ê½ÆÀ·Ö
+        /// Î»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½ - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½
         /// </summary>
         private Move GetPositionalMove(GameState gameState, List<Vector2Int> availableMoves)
         {
@@ -250,55 +250,55 @@ namespace HexGame.AI
                 return positionalStrategy.GetBestMove(gameState, availableMoves);
             }
 
-            // ×îºóµÄ»ØÍË£ºËæ»úÑ¡Ôñ
+            // ï¿½ï¿½ï¿½Ä»ï¿½ï¿½Ë£ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½
             var randomPos = availableMoves[Random.Range(0, availableMoves.Count)];
             return new Move(randomPos, PlayerType.AI);
         }
 
         /// <summary>
-        /// »ìºÏÄ£Ê½ - ×ÛºÏÊ¹ÓÃ¶àÖÖ²ßÂÔ
+        /// ï¿½ï¿½ï¿½Ä£Ê½ - ï¿½Ûºï¿½Ê¹ï¿½Ã¶ï¿½ï¿½Ö²ï¿½ï¿½ï¿½
         /// </summary>
         private Move GetHybridMove(GameState gameState, List<Vector2Int> availableMoves)
         {
             if (showThinkingProcess)
             {
-                LogDebug("=== AIË¼¿¼¹ý³Ì ===");
+                LogDebug("=== AIË¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ===");
             }
 
-            // 1. Ê×ÏÈ¼ì²éÍþÐ²£¨×î¸ßÓÅÏÈ¼¶£©
+            // 1. ï¿½ï¿½ï¿½È¼ï¿½ï¿½ï¿½ï¿½Ð²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¼ï¿½ï¿½ï¿½
             var threatStrategy = GetStrategy<ThreatDetectionStrategy>();
             if (threatStrategy != null)
             {
                 var winningMove = threatStrategy.GetWinningMove(gameState, PlayerType.AI);
                 if (winningMove != null)
                 {
-                    LogDebug("ÓÅÏÈ¼¶1£ºÕÒµ½±ØÊ¤ÊÖ£¡");
+                    LogDebug("ï¿½ï¿½ï¿½È¼ï¿½1ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½Ê¤ï¿½Ö£ï¿½");
                     return winningMove;
                 }
 
                 var blockingMove = threatStrategy.GetBlockingMove(gameState, PlayerType.Human);
                 if (blockingMove != null)
                 {
-                    LogDebug("ÓÅÏÈ¼¶2£ºÕÒµ½±Ø·ÀÊÖ£¡");
+                    LogDebug("ï¿½ï¿½ï¿½È¼ï¿½2ï¿½ï¿½ï¿½Òµï¿½ï¿½Ø·ï¿½ï¿½Ö£ï¿½");
                     return blockingMove;
                 }
             }
 
-            // 2. ÆÀ¹ÀºòÑ¡ÒÆ¶¯
+            // 2. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½Æ¶ï¿½
             var candidateEvaluations = new List<(Vector2Int position, float score, string reason)>();
 
-            // Ê¹ÓÃÎ»ÖÃÆÀ¹À²ßÂÔ
+            // Ê¹ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             var positionalStrategy = GetStrategy<PositionalEvaluationStrategy>();
             if (positionalStrategy != null)
             {
                 foreach (var pos in availableMoves)
                 {
                     float score = positionalStrategy.EvaluatePosition(gameState, pos);
-                    candidateEvaluations.Add((pos, score, "Î»ÖÃÆÀ¹À"));
+                    candidateEvaluations.Add((pos, score, "Î»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"));
                 }
             }
 
-            // 3. ¶ÔÓÚ¸ß·ÖºòÑ¡£¬Ê¹ÓÃMCTS½øÐÐÑéÖ¤
+            // 3. ï¿½ï¿½ï¿½Ú¸ß·Öºï¿½Ñ¡ï¿½ï¿½Ê¹ï¿½ï¿½MCTSï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤
             var topCandidates = candidateEvaluations
                 .OrderByDescending(x => x.score)
                 .Take(Mathf.Min(5, candidateEvaluations.Count))
@@ -312,47 +312,47 @@ namespace HexGame.AI
                 foreach (var candidate in topCandidates)
                 {
                     float winRate = mctsStrategy.EvaluatePosition(gameState, candidate.position);
-                    mctsResults.Add((candidate.position, winRate, $"MCTSÊ¤ÂÊ:{winRate:P1}"));
+                    mctsResults.Add((candidate.position, winRate, $"MCTSÊ¤ï¿½ï¿½:{winRate:P1}"));
 
                     if (showThinkingProcess)
                     {
-                        LogDebug($"ºòÑ¡Î»ÖÃ ({candidate.position.x},{candidate.position.y}): " +
-                                $"Î»ÖÃ·Ö{candidate.score:F1}, Ê¤ÂÊ{winRate:P1}");
+                        LogDebug($"ï¿½ï¿½Ñ¡Î»ï¿½ï¿½ ({candidate.position.x},{candidate.position.y}): " +
+                                $"Î»ï¿½Ã·ï¿½{candidate.score:F1}, Ê¤ï¿½ï¿½{winRate:P1}");
                     }
                 }
 
-                // Ñ¡ÔñÊ¤ÂÊ×î¸ßµÄÒÆ¶¯
+                // Ñ¡ï¿½ï¿½Ê¤ï¿½ï¿½ï¿½ï¿½ßµï¿½ï¿½Æ¶ï¿½
                 var bestMCTS = mctsResults.OrderByDescending(x => x.winRate).First();
 
                 if (showThinkingProcess)
                 {
-                    LogDebug($"×îÖÕÑ¡Ôñ: ({bestMCTS.position.x},{bestMCTS.position.y}) - {bestMCTS.reason}");
+                    LogDebug($"ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½: ({bestMCTS.position.x},{bestMCTS.position.y}) - {bestMCTS.reason}");
                 }
 
                 return new Move(bestMCTS.position, PlayerType.AI);
             }
 
-            // 4. »ØÍËµ½×î¸ß·ÖµÄÎ»ÖÃÆÀ¹À
+            // 4. ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ß·Öµï¿½Î»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             if (candidateEvaluations.Count > 0)
             {
                 var bestCandidate = candidateEvaluations.OrderByDescending(x => x.score).First();
 
                 if (showThinkingProcess)
                 {
-                    LogDebug($"Ê¹ÓÃÎ»ÖÃÆÀ¹À×î¸ß·Ö: ({bestCandidate.position.x},{bestCandidate.position.y}) " +
-                            $"·ÖÊý:{bestCandidate.score:F1}");
+                    LogDebug($"Ê¹ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß·ï¿½: ({bestCandidate.position.x},{bestCandidate.position.y}) " +
+                            $"ï¿½ï¿½ï¿½ï¿½:{bestCandidate.score:F1}");
                 }
 
                 return new Move(bestCandidate.position, PlayerType.AI);
             }
 
-            // 5. ×îºóµÄ»ØÍË
+            // 5. ï¿½ï¿½ï¿½Ä»ï¿½ï¿½ï¿½
             return GetFallbackMove(gameState);
         }
 
         #endregion
 
-        #region ¸¨Öú·½·¨
+        #region ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
         private List<Vector2Int> GetAvailableMoves(GameState gameState)
         {
@@ -373,13 +373,13 @@ namespace HexGame.AI
             var availableMoves = GetAvailableMoves(gameState);
             if (availableMoves.Count > 0)
             {
-                // Ñ¡ÔñÖÐÐÄ¸½½üµÄÎ»ÖÃ
+                // Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½
                 var center = new Vector2(config.boardRows / 2f, config.boardCols / 2f);
                 var centerMove = availableMoves
                     .OrderBy(pos => Vector2.Distance(pos, center))
                     .First();
 
-                LogDebug($"Ê¹ÓÃ»ØÍË²ßÂÔ£¬Ñ¡ÔñÖÐÐÄ¸½½üÎ»ÖÃ: ({centerMove.x}, {centerMove.y})");
+                LogDebug($"Ê¹ï¿½Ã»ï¿½ï¿½Ë²ï¿½ï¿½Ô£ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½Î»ï¿½ï¿½: ({centerMove.x}, {centerMove.y})");
                 return new Move(centerMove, PlayerType.AI);
             }
 
@@ -389,7 +389,7 @@ namespace HexGame.AI
 
         #endregion
 
-        #region »º´æ¹ÜÀí
+        #region ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
         private string GetBoardStateHash(GameState gameState)
         {
@@ -405,7 +405,7 @@ namespace HexGame.AI
                     var cell = board[i, j];
                     if (cell.isOccupied)
                     {
-                        hash.Append($"{i},{j}:{(int)cell.occupiedBy};");
+                        hash.Append($"{i},{j}:{cell.occupiedBy};");
                     }
                 }
             }
@@ -433,7 +433,7 @@ namespace HexGame.AI
             string stateHash = GetBoardStateHash(gameState);
             if (stateHash != null)
             {
-                // ÏÞÖÆ»º´æ´óÐ¡
+                // ï¿½ï¿½ï¿½Æ»ï¿½ï¿½ï¿½ï¿½Ð¡
                 if (moveCache.Count >= MAX_CACHE_SIZE)
                 {
                     var keysToRemove = moveCache.Keys.Take(moveCache.Count / 2).ToList();
@@ -450,12 +450,12 @@ namespace HexGame.AI
         public void ClearCache()
         {
             moveCache?.Clear();
-            LogDebug("AI¾ö²ß»º´æÒÑÇå³ý");
+            LogDebug("AIï¿½ï¿½ï¿½ß»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
         }
 
         #endregion
 
-        #region Í³¼ÆºÍµ÷ÊÔ
+        #region Í³ï¿½ÆºÍµï¿½ï¿½ï¿½
 
         private void RecordDecisionStats()
         {
@@ -465,14 +465,14 @@ namespace HexGame.AI
 
         public string GetPerformanceStats()
         {
-            if (totalDecisions == 0) return "ÔÝÎÞÍ³¼ÆÊý¾Ý";
+            if (totalDecisions == 0) return "ï¿½ï¿½ï¿½ï¿½Í³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
 
             float avgThinkingTime = totalThinkingTime / totalDecisions;
-            return $"AIÐÔÄÜÍ³¼Æ:\n" +
-                   $"- ×Ü¾ö²ß´ÎÊý: {totalDecisions}\n" +
-                   $"- Æ½¾ùË¼¿¼Ê±¼ä: {avgThinkingTime:F1}ms\n" +
-                   $"- »º´æÃüÖÐÊý: {moveCache?.Count ?? 0}\n" +
-                   $"- µ±Ç°AIÄ£Ê½: {currentAIMode}";
+            return $"AIï¿½ï¿½ï¿½ï¿½Í³ï¿½ï¿½:\n" +
+                   $"- ï¿½Ü¾ï¿½ï¿½ß´ï¿½ï¿½ï¿½: {totalDecisions}\n" +
+                   $"- Æ½ï¿½ï¿½Ë¼ï¿½ï¿½Ê±ï¿½ï¿½: {avgThinkingTime:F1}ms\n" +
+                   $"- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½: {moveCache?.Count ?? 0}\n" +
+                   $"- ï¿½ï¿½Ç°AIÄ£Ê½: {currentAIMode}";
         }
 
         public void SetAIMode(AIMode newMode)
@@ -480,8 +480,8 @@ namespace HexGame.AI
             if (currentAIMode != newMode)
             {
                 currentAIMode = newMode;
-                ClearCache(); // ÇÐ»»Ä£Ê½Ê±Çå³ý»º´æ
-                LogDebug($"AIÄ£Ê½ÒÑÇÐ»»Îª: {newMode}");
+                ClearCache(); // ï¿½Ð»ï¿½Ä£Ê½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+                LogDebug($"AIÄ£Ê½ï¿½ï¿½ï¿½Ð»ï¿½Îª: {newMode}");
             }
         }
 
@@ -500,7 +500,7 @@ namespace HexGame.AI
 
         #endregion
 
-        #region ¹«¹²ÅäÖÃ½Ó¿Ú
+        #region ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã½Ó¿ï¿½
 
         public void SetDebugMode(bool enabled)
         {
@@ -515,7 +515,7 @@ namespace HexGame.AI
             {
                 config = newConfig;
 
-                // ¸üÐÂËùÓÐ²ßÂÔµÄÅäÖÃ
+                // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð²ï¿½ï¿½Ôµï¿½ï¿½ï¿½ï¿½ï¿½
                 foreach (var strategy in strategies)
                 {
                     if (strategy is IConfigurable configurable)
@@ -524,18 +524,18 @@ namespace HexGame.AI
                     }
                 }
 
-                ClearCache(); // ÅäÖÃ±ä¸üÊ±Çå³ý»º´æ
-                LogDebug("AIÅäÖÃÒÑ¸üÐÂ");
+                ClearCache(); // ï¿½ï¿½ï¿½Ã±ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+                LogDebug("AIï¿½ï¿½ï¿½ï¿½ï¿½Ñ¸ï¿½ï¿½ï¿½");
             }
         }
 
         #endregion
     }
 
-    #region Ïà¹Ø½Ó¿Ú¶¨Òå
+    #region ï¿½ï¿½Ø½Ó¿Ú¶ï¿½ï¿½ï¿½
 
     /// <summary>
-    /// AI²ßÂÔ½Ó¿Ú
+    /// AIï¿½ï¿½ï¿½Ô½Ó¿ï¿½
     /// </summary>
     public interface IAIStrategy
     {
@@ -544,7 +544,7 @@ namespace HexGame.AI
     }
 
     /// <summary>
-    /// ¿ÉÅäÖÃ½Ó¿Ú
+    /// ï¿½ï¿½ï¿½ï¿½ï¿½Ã½Ó¿ï¿½
     /// </summary>
     public interface IConfigurable
     {

@@ -3,11 +3,15 @@
   "WorkspaceRootPath": "G:\\Hex\\RogueHex\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{B0CBB9B4-458D-DCD9-DD17-304F3522BFE7}|Assembly-CSharp.csproj|g:\\hex\\roguehex\\assets\\scripts\\input\\inputhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CBB9B4-458D-DCD9-DD17-304F3522BFE7}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\input\\inputhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{B0CBB9B4-458D-DCD9-DD17-304F3522BFE7}|Assembly-CSharp.csproj|G:\\Hex\\RogueHex\\assets\\scripts\\core\\gamestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B0CBB9B4-458D-DCD9-DD17-304F3522BFE7}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\core\\gamestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B0CBB9B4-458D-DCD9-DD17-304F3522BFE7}|Assembly-CSharp.csproj|g:\\hex\\roguehex\\assets\\scripts\\ai\\aicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B0CBB9B4-458D-DCD9-DD17-304F3522BFE7}|Assembly-CSharp.csproj|G:\\Hex\\RogueHex\\assets\\scripts\\ai\\aicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B0CBB9B4-458D-DCD9-DD17-304F3522BFE7}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ai\\aicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -46,7 +50,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 13,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -78,7 +82,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
+              "Title": "InputHandler.cs",
+              "DocumentMoniker": "G:\\Hex\\RogueHex\\Assets\\Scripts\\Input\\InputHandler.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Input\\InputHandler.cs",
+              "ToolTip": "G:\\Hex\\RogueHex\\Assets\\Scripts\\Input\\InputHandler.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Input\\InputHandler.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-22T09:49:25.847Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "MonteCarloStrategy.cs",
               "DocumentMoniker": "G:\\Hex\\RogueHex\\Assets\\Scripts\\AI\\Strategies\\MonteCarloStrategy.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\AI\\Strategies\\MonteCarloStrategy.cs",
@@ -90,7 +107,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "ThreatDetectionStrategy.cs",
               "DocumentMoniker": "G:\\Hex\\RogueHex\\Assets\\Scripts\\AI\\Strategies\\ThreatDetectionStrategy.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\AI\\Strategies\\ThreatDetectionStrategy.cs",
@@ -102,7 +119,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "PositionalEvaluationStrategy.cs",
               "DocumentMoniker": "G:\\Hex\\RogueHex\\Assets\\Scripts\\AI\\Strategies\\PositionalEvaluationStrategy.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\AI\\Strategies\\PositionalEvaluationStrategy.cs",
@@ -114,7 +131,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "AIController.cs",
               "DocumentMoniker": "G:\\Hex\\RogueHex\\Assets\\Scripts\\AI\\AIController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\AI\\AIController.cs",
@@ -122,12 +139,11 @@
               "RelativeToolTip": "Assets\\Scripts\\AI\\AIController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-21T01:54:03.924Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-21T01:54:03.924Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "WinConditionChecker.cs",
               "DocumentMoniker": "G:\\Hex\\RogueHex\\Assets\\Scripts\\Gameplay\\WinConditionChecker.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Gameplay\\WinConditionChecker.cs",
@@ -139,7 +155,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "MoveValidator.cs",
               "DocumentMoniker": "G:\\Hex\\RogueHex\\Assets\\Scripts\\Gameplay\\MoveValidator.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Gameplay\\MoveValidator.cs",
@@ -151,20 +167,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "GameState.cs",
               "DocumentMoniker": "G:\\Hex\\RogueHex\\Assets\\Scripts\\Core\\GameState.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Core\\GameState.cs",
               "ToolTip": "G:\\Hex\\RogueHex\\Assets\\Scripts\\Core\\GameState.cs",
               "RelativeToolTip": "Assets\\Scripts\\Core\\GameState.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAFACAAABAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACkAAAAsAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-21T01:47:45.337Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-21T01:47:45.337Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "GameConfig.cs",
               "DocumentMoniker": "G:\\Hex\\RogueHex\\Assets\\Scripts\\Core\\GameConfig.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Core\\GameConfig.cs",
@@ -176,7 +191,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "GameManager.cs",
               "DocumentMoniker": "G:\\Hex\\RogueHex\\Assets\\Scripts\\Core\\GameManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Core\\GameManager.cs",
